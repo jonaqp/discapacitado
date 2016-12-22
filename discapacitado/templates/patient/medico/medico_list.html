@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filter %}
+{% block title %}DashBoard{% endblock title %}
+
+{% block header %}
+    {{ block.super }}
+{% endblock header %}
+
+{% block nav %}
+    {{ block.super }}
+{% endblock nav %}
+
+
+{% block container %}
+    <h3>{{ text_central }}</h3>
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
+        {% include "partials/button_busqueda.html" %}
+    </div>
+    <div class="clearfix"></div>
+
+
+    <div class="panel-body">
+        <div class="table-responsive" style="display: block;">
+            <table class="table">
+                <thead>
+                <tr class="bg-blue">
+                    <th>#</th>
+                    <th>Paciente</th>
+                    <th>Doctor</th>
+                    <th>Turno</th>
+                    <th>Fecha</th>
+                    <th>Tipo Atencion</th>
+                    <th>Accion</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if object_list %}
+                    {% for object in object_list %}
+                        <tr>
+                            <td><b>{{ forloop.counter }} .-</b></td>
+                            <td>{{ object.paciente.nombres }} {{ object.paciente.apellido_paterno }} {{ object.paciente.apellido_materno }}</td>
+                            <td>{{ object.disponibilidad.usuario.first_name }} {{ object.disponibilidad.usuario.last_name }}</td>
+                            <td>{{ object.disponibilidad.turno.nombre }}</td>
+                            <td>{{ object.disponibilidad.horario|date:"d/m/y"}}</td>
+                            <td>{{ object.get_tipo_atencion_display }}</td>
+                            <td>
+                                {% if  object.tipo_atencion == code_cita_initial %}
+                                    <a href="{% url 'paciente-app:medico:create' pk=object.id %}"><i class="icon-pencil7">Atender</i></a>                                &nbsp
+                                    <a href="{% url 'paciente-app:medico:update' pk=object.id %}"><i class="icon-pencil7">Cancelar</i></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7">No items.</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">No items.</td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+        {% include 'partials/pagination.html' %}
+    </div>
+{% endblock container %}

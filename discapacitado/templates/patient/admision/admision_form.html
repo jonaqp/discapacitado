@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filter %}
+{% block title %}DashBoard{% endblock title %}
+
+{% block header %}
+    {{ block.super }}
+{% endblock header %}
+
+{% block nav %}
+    {{ block.super }}
+{% endblock nav %}
+
+
+{% block container %}
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-warning alert-styled-left">
+                            <button type="button" class="close"
+                                    data-dismiss="alert"><span>×</span><span
+                                    class="sr-only">Close</span></button>
+                            <span class="text-semibold">Warning!</span>{{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <form method="post" class="form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                             <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><b>{{ text_central }}</b></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ form.tipo_documento.label }}</label>
+                                                {{ form.tipo_documento|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.tipo_documento.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.nombres.label }}</label>
+                                                {{ form.nombres|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.nombres.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.apellido_paterno.label }}</label>
+                                                {{ form.apellido_paterno|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.apellido_paterno.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.apellido_materno.label }}</label>
+                                                {{ form.apellido_materno|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.apellido_materno.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.numero_hci.label }}</label>
+                                                {{ form.numero_hci|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.numero_hci.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.genero.label }}</label>
+                                                {{ form.genero|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.genero.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.fecha_nacimiento.label }}</label>
+                                                {{ form.fecha_nacimiento|add_class:"form-control datepicker" }}
+                                                <span class="help-block">{{ form.fecha_nacimiento.errors }}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label>{{ form.numero_documento.label }}</label>
+                                                {{ form.numero_documento|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.numero_documento.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.financiador.label }}</label>
+                                                {{ form.financiador|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.financiador.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.componente_filiacion.label }}</label>
+                                                {{ form.componente_filiacion|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.componente_filiacion.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.codigo_componente_filiacion.label }}</label>
+                                                {{ form.codigo_componente_filiacion|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.codigo_componente_filiacion.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-semibold">{{ form.grado_instruccion.label }}</label>
+                                                {{ form.grado_instruccion|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.grado_instruccion.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.etnia.label }}</label>
+                                                {{ form.etnia|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.etnia.errors }}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><b>Datos Procedencia</b></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ form.lugar_nacimiento.label }}</label>
+                                                {{ form.lugar_nacimiento|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.lugar_nacimiento.errors }}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>{{ form.distrito_residencial_actual.label }}</label>
+                                                {{ form.distrito_residencial_actual|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.distrito_residencial_actual.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.referencia.label }}</label>
+                                                {{ form.referencia|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.referencia.errors }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ form.distrito_residencial.label }}</label>
+                                                {{ form.distrito_residencial|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.distrito_residencial.errors }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{{ form.direccion_actual.label }}</label>
+                                                {{ form.direccion_actual|add_class:"form-control" }}
+                                                <span class="help-block">{{ form.direccion_actual.errors }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><b>Datos Contacto</b></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                {{ form.telefono_movil.label }}
+                                                {{ form.telefono_movil|add_class:"form-control" }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                {{ form.correo.label }}
+                                                {{ form.correo|add_class:"form-control" }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <a class="btn btn-info" href="{% url 'paciente-app:admision:list' %}"><i class="fa fa-arrow-left"></i>Atras
+                            </a>
+                            <button type="submit" class="btn btn-info">Submit<i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock container %}
+{% block javascript %}
+    <script src="{% static 'js/page/admision.js' %}"></script>
+{% endblock javascript %}

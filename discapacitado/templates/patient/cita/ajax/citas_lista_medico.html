@@ -1,0 +1,41 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Lista de Medico </h3>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive" style="display: block;">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>{{ tipo_medico }}</th>
+                    <th>Accion</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if lista_medico %}
+                    {% for medico in lista_medico %}
+                        <tr>
+                            <td><b>{{ forloop.counter }}.-</b></td>
+                            <td>{{ medico.usuario.first_name|default_if_none:"TEST" }}</td>
+                            <td>
+                                <button data-usuario="{{ medico.usuario.id }}" type="button"
+                                        class="btn btn-primary detalle_lista_medico">ver
+                                </button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No Existen Registros</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center">No Existen Registros</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+  </div>
+</div>

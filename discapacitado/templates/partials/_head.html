@@ -1,0 +1,26 @@
+{% load static %}
+<header class="main-header">
+    <!-- Titulo del Modulo -->
+    {% if user.is_authenticated %}
+        <div class="main-header__brand">
+            <a href="#" class="brand__button" gl-click="main-menu"><i
+                    class="fa fa-bars"></i></a>
+            <figure>
+                <img src="{% static "vendor/plantilla/img/minsa_logo.png" %}" alt="minsa logo" class="brand__logo">
+            </figure>
+            <a href="" class=" btn-select--white brand__hospital">DISCAPACITADO</a>
+        </div>
+        <div class="main-header__user">
+            <div class="button-menu" gl-attr="hidden-click-anywhere">
+                <a href="#" class="btn-select btn-select--white btn-center"
+                   gl-click="user-options">Bienvenido
+                    <b>{{ user.first_name }} {{ user.last_name }}</b></a>
+            </div>
+            <a href="{% url 'auth:logout' %}"
+               class="btn-blue btn-icon btn-center"><span
+                    class="fa fa-power-off"></span></a>
+        </div>
+    {% endif %}
+</header>
+
+

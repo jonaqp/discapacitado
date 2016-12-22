@@ -1,0 +1,476 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filter %}
+{% block title %}DashBoard{% endblock title %}
+{% block css %}
+    <link rel="stylesheet"
+          href="{% static 'vendor/select2/css/select2.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/select2-bootstrap.css' %}"/>
+{% endblock %}
+{% block header %}
+    {{ block.super }}
+{% endblock header %}
+
+{% block nav %}
+    {{ block.super }}
+{% endblock nav %}
+
+
+{% block container %}
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-warning alert-styled-left">
+                            <button type="button" class="close"
+                                    data-dismiss="alert"><span>×</span><span
+                                    class="sr-only">Close</span></button>
+                            <span class="text-semibold">Warning!</span>{{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <h1>{{ text_central }}</h1>
+
+                    <div class="panel-body">
+                        <div class="col-md-2">
+                            <a class="pull-left"
+                               href="{% url 'paciente-app:cita:list' %}">
+                                <img class="media-object"
+                                     data-src="holder.js/64x64"
+                                     alt="Agregar Cita"
+                                     src="{% static "img/paciente.jpg" %}"
+                                     style="width: 64px; height: 64px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="center-block"><label>Paciente</label></span>
+                            <span>{{ paciente.paciente.nombres }} {{ paciente.paciente.apellido_paterno }}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="center-block"><label>DNI</label></span>
+                            <span>{{ paciente.paciente.numero_documento }}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="center-block"><label>Edad</label></span>
+                            <span>{{ paciente.paciente.edad }}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="center-block"><label>Financiador</span>
+                            <span>{{ paciente.paciente.get_financiador_display }}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="center-block"><label>Genero</label></span>
+                            <span>{{ paciente.paciente.get_genero_display }}</span>
+                        </div>
+                    </div>
+                    <form role="form" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Consulta</h3>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form.fecha.label_tag }}
+                                            {{ form.fecha|add_class:"form-control datepicker" }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form.paciente|add_class:"hidden" }}
+                                        {{ form.numero_terapia|add_class:"hidden" }}
+                                        {{ form.descripcion_terapia|add_class:"hidden" }}
+                                        {{ form.observacion_terapia|add_class:"hidden" }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Condiccion
+                                        Paciente</h3>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ form_condicion.en_establecimiento.label }}</label>
+                                            {{ form_condicion.en_establecimiento|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_condicion.en_establecimiento.errors }}</span>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>{{ form_condicion.referencia_establecimiento.label }}</label>
+                                            {{ form_condicion.referencia_establecimiento|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_condicion.referencia_establecimiento.errors }}</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ form_condicion.en_servicio.label }}</label>
+                                            {{ form_condicion.en_servicio|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_condicion.en_establecimiento.errors }}</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>{{ form_condicion.establecimiento_servicio.label }}</label>
+                                            {{ form_condicion.establecimiento_servicio|add_class:"form-control select_renaes" }}
+                                            <span class="help-block">{{ form_condicion.establecimiento_servicio.errors }}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Atencion
+                                        Paciente</h3>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ form_atencion.ayuda_tecnica.label }}</label>
+                                            {{ form_atencion.ayuda_tecnica|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.ayuda_tecnica.errors }}</span>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ form_atencion.accidente_dano.label }}</label>
+                                            {{ form_atencion.accidente_dano|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.accidente_dano.errors }}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Tiempo
+                                        Discapacidad</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <label>{{ form_atencion.tiempo_discapacidad_anio.label }}</label>
+                                            {{ form_atencion.tiempo_discapacidad_anio|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.tiempo_discapacidad_anio.errors }}</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>{{ form_atencion.tiempo_discapacidad_mes.label }}</label>
+                                            {{ form_atencion.tiempo_discapacidad_mes|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.tiempo_discapacidad_mes.errors }}</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>{{ form_atencion.tiempo_discapacidad_dia.label }}</label>
+                                            {{ form_atencion.tiempo_discapacidad_dia|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.tiempo_discapacidad_dia.errors }}</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Tiempo sin
+                                        Trabajar</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <label>{{ form_atencion.tstdd_anio.label }}</label>
+                                            {{ form_atencion.tstdd_anio|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.tstdd_anio.errors }}</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>{{ form_atencion.tstdd_mes.label }}</label>
+                                            {{ form_atencion.tstdd_mes|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.tstdd_mes.errors }}</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>{{ form_atencion.tstdd_dia.label }}</label>
+                                            {{ form_atencion.tstdd_dia|add_class:"form-control" }}
+                                            <span class="help-block">{{ form_atencion.tstdd_dia.errors }}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Diagnostico</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select id="id_ciex_form_select" name="ciex_form_select" class="form-control select_ciex">
+                                                </select>
+                                                <span class="input-group-btn">
+                                                      <button id="btn-select-ciex" class="btn btn-default" type="button">Add</button>
+                                                </span>
+                                            </div>
+                                            {{ formset_ciex.management_form }}
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="tbody-ciex-formset-parent">
+                                                {% for frm_ciex in formset_ciex %}
+                                                    <tr>
+                                                        <td>{{ frm_ciex.codigo_ciex|add_class:"cls_codigo_ciex" }}
+                                                            {{ frm_ciex.descripcion|add_class:"form-control cls_descripcion_ciex" }}
+                                                        </td>
+                                                        <td>{{ frm_ciex.DELETE }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                                <tbody id="tbody-ciex-formset-empty" style="display: none">
+                                                {% with formset_ciex.empty_form as f %}
+                                                    <tr>
+                                                        <td>
+                                                            {{ f.codigo_ciex|add_class:"cls_codigo_ciex" }}
+                                                            {{ f.descripcion|add_class:"form-control cls_descripcion_ciex" }}
+                                                        </td>
+                                                        <td>{{ f.DELETE }}</td>
+                                                    </tr>
+                                                {% endwith %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Discapacidad</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select id="id_discapacidad_form_select"
+                                                        name="discapacidad_form_select"
+                                                        class="form-control select_discapacidad">
+                                                </select>
+                                                <span class="input-group-btn">
+                                                      <button id="btn-select-discapacidad"
+                                                              class="btn btn-default"
+                                                              type="button">Add</button>
+                                                </span>
+                                            </div>
+                                            {{ formset_discapacidad.management_form }}
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="tbody-discapacidad-formset-parent">
+                                                {% for frm_discapacidad in formset_discapacidad %}
+                                                    <tr>
+                                                        <td>{{ frm_discapacidad.codigo_discapacidad|add_class:"cls_codigo_discapacidad" }}
+                                                            {{ frm_discapacidad.descripcion|add_class:"form-control cls_descripcion_discapacidad" }}
+                                                        </td>
+                                                        <td>{{ frm_discapacidad.DELETE }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                                <tbody id="tbody-discapacidad-formset-empty"
+                                                       style="display: none">
+                                                {% with formset_discapacidad.empty_form as f %}
+                                                    <tr>
+                                                         <td>
+                                                             {{ f.codigo_discapacidad|add_class:"cls_codigo_discapacidad" }}
+                                                            {{ f.descripcion|add_class:"form-control cls_descripcion_discapacidad" }}
+                                                        </td>
+                                                        </td>
+                                                        <td>{{ f.DELETE }}</td>
+                                                    </tr>
+                                                {% endwith %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Deficiencia</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select id="id_deficiencia_form_select" name="deficiencia_form_select" class="form-control select_deficiencia">
+                                                </select>
+                                                <span class="input-group-btn">
+                                                      <button id="btn-select-deficiencia" class="btn btn-default" type="button">Add</button>
+                                                </span>
+                                            </div>
+                                            {{ formset_deficiencia.management_form }}
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="tbody-deficiencia-formset-parent">
+                                                {% for frm_deficiencia in formset_deficiencia %}
+                                                    <tr>
+                                                        <td>{{ frm_deficiencia.codigo_deficiencia|add_class:"cls_codigo_deficiencia" }}
+                                                            {{ frm_deficiencia.descripcion|add_class:"form-control cls_descripcion_deficiencia" }}
+                                                        </td>
+                                                        <td>{{ frm_deficiencia.DELETE }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                                <tbody id="tbody-deficiencia-formset-empty"
+                                                       style="display: none">
+                                                {% with formset_deficiencia.empty_form as f %}
+                                                    <tr>
+                                                        <td>
+                                                            {{ f.codigo_deficiencia|add_class:"cls_codigo_deficiencia" }}
+                                                            {{ f.descripcion|add_class:"form-control cls_descripcion_deficiencia" }}
+                                                        </td>
+                                                        <td>{{ f.DELETE }}</td>
+                                                    </tr>
+                                                {% endwith %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">CIF</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select id="id_cif_form_select" name="cif_form_select" class="form-control select_cif">
+                                                </select>
+                                                <span class="input-group-btn">
+                                                      <button id="btn-select-cif" class="btn btn-default" type="button">Add</button>
+                                                </span>
+                                            </div>
+                                            {{ formset_cif.management_form }}
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="tbody-cif-formset-parent">
+                                                    {% for frm_cif in formset_cif %}
+                                                        <tr>
+                                                            <td>{{ frm_cif.codigo_cif|add_class:"cls_codigo_cif" }}
+                                                                {{ frm_cif.descripcion|add_class:"form-control cls_descripcion_cif" }}
+                                                            </td>
+                                                            <td>{{ frm_cif.DELETE }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tbody id="tbody-cif-formset-empty" style="display: none">
+                                                    {% with formset_cif.empty_form as f %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ f.codigo_cif|add_class:"cls_codigo_cif" }}
+                                                                {{ f.descripcion|add_class:"form-control cls_descripcion_cif" }}
+                                                            </td>
+                                                            <td>{{ f.DELETE }}</td>
+                                                        </tr>
+                                                    {% endwith %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">CTP</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select id="id_cpt_form_select" name="cpt_form_select" class="form-control select_cpt">
+                                                </select>
+                                                <span class="input-group-btn">
+                                                      <button id="btn-select-cpt" class="btn btn-default" type="button">Add</button>
+                                                </span>
+                                            </div>
+                                            {{ formset_cpt.management_form }}
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="tbody-cpt-formset-parent">
+                                                    {% for frm_cpt in formset_cpt %}
+                                                        <tr>
+                                                            <td>{{ frm_cpt.codigo_cpt|add_class:"cls_codigo_cpt" }}
+                                                                {{ frm_cpt.descripcion|add_class:"form-control cls_descripcion_cpt" }}
+                                                            </td>
+                                                            <td>{{ frm_cpt.DELETE }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tbody id="tbody-cpt-formset-empty" style="display: none">
+                                                    {% with formset_cpt.empty_form as f %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ f.codigo_cpt|add_class:"cls_codigo_cpt" }}
+                                                                {{ f.descripcion|add_class:"form-control cls_descripcion_cpt" }}
+                                                            </td>
+                                                            <td>{{ f.DELETE }}</td>
+                                                        </tr>
+                                                    {% endwith %}
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <button type="submit" class="btn btn-primary center-block">
+                                Guardar
+                            </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock container %}
+{% block javascript %}
+    <script src="{% static 'vendor/select2/js/select2.full.min.js' %}"></script>
+    <script src="{% static 'js/formset.js' %}"></script>
+    <script src="{% static 'js/page/medico.js' %}"></script>
+{% endblock javascript %}

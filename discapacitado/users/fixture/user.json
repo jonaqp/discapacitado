@@ -1,0 +1,402 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$30000$XY4UVPCYKRqO$hjEw3+ijX2DUIwiiP9AHnYkDdVZJhuPmdEplHegj7EM=",
+        "last_login": "2016-12-18T18:14:31Z",
+        "is_superuser": true,
+        "username": "demo",
+        "first_name": "demo1",
+        "last_name": "ape demo1",
+        "email": "demo@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2016-12-18T18:14:24.282Z",
+        "name": "",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$30000$qvSd0e5drXUR$JEPmekkGbm3O26KhU/piFfYWmoky80pDmwYYGXCZfUU=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "demo2",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-12-18T18:16:11.415Z",
+        "name": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$30000$1TReZVmmTeLO$N1JHWe3+2yBAIntOV1chi3YwLXf+IgMeYqavmA7MPXE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "demo3",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-12-18T18:16:18.541Z",
+        "name": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$30000$VKNytqgnd8fc$DJqljXfxUplLjW69TK4+OKtQJJGb4GeNZt5DM4GG9A0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "demo4",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-12-18T18:16:29.997Z",
+        "name": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$30000$TlWcA4zbee0U$T9HDWF8GkIYes27VhFvpTK1xU4vujP/CRBY0X1N591U=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "demo5",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-12-18T18:16:38.727Z",
+        "name": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$30000$WDoOa3eitlpT$Vmioi5B78WDP+cQdSgGFvEk4m88Fe3kJXbY+aDPy2mY=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "demo6",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-12-18T18:16:45.836Z",
+        "name": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.userestablecimiento",
+    "pk": 1,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:18:17.075Z",
+        "fecha_modificacion": "2016-12-18T18:18:17.075Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 1,
+        "establecimiento": [
+            6266,
+            4310
+        ]
+    }
+},
+{
+    "model": "users.userestablecimiento",
+    "pk": 2,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:19:11.655Z",
+        "fecha_modificacion": "2016-12-18T18:19:11.655Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 2,
+        "establecimiento": [
+            6266,
+            4310
+        ]
+    }
+},
+{
+    "model": "users.userestablecimiento",
+    "pk": 3,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:19:11.712Z",
+        "fecha_modificacion": "2016-12-18T18:19:11.712Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 2,
+        "establecimiento": [
+            6266,
+            4310
+        ]
+    }
+},
+{
+    "model": "users.userestablecimiento",
+    "pk": 4,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:19:18.922Z",
+        "fecha_modificacion": "2016-12-18T18:19:18.922Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 3,
+        "establecimiento": [
+            6266,
+            4310
+        ]
+    }
+},
+{
+    "model": "users.userestablecimiento",
+    "pk": 5,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:19:26.286Z",
+        "fecha_modificacion": "2016-12-18T18:19:26.286Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 4,
+        "establecimiento": [
+            6266,
+            4310
+        ]
+    }
+},
+{
+    "model": "users.userestablecimiento",
+    "pk": 6,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:19:33.592Z",
+        "fecha_modificacion": "2016-12-18T18:19:33.592Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 5,
+        "establecimiento": [
+            6266,
+            4310
+        ]
+    }
+},
+{
+    "model": "users.userestablecimiento",
+    "pk": 7,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:19:41.247Z",
+        "fecha_modificacion": "2016-12-18T18:19:41.248Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 6,
+        "establecimiento": [
+            6266,
+            4310
+        ]
+    }
+},
+{
+    "model": "users.usercupo",
+    "pk": 1,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:20:29.639Z",
+        "fecha_modificacion": "2016-12-18T18:20:29.639Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 1,
+        "fecha": "2016-12-01",
+        "cupo": 10
+    }
+},
+{
+    "model": "users.usercupo",
+    "pk": 2,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:20:38.956Z",
+        "fecha_modificacion": "2016-12-18T18:20:38.956Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 2,
+        "fecha": "2016-12-01",
+        "cupo": 10
+    }
+},
+{
+    "model": "users.usercupo",
+    "pk": 3,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:20:44.131Z",
+        "fecha_modificacion": "2016-12-18T18:20:44.131Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 3,
+        "fecha": "2016-12-01",
+        "cupo": 10
+    }
+},
+{
+    "model": "users.usercupo",
+    "pk": 4,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:20:47.383Z",
+        "fecha_modificacion": "2016-12-18T18:20:47.383Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 4,
+        "fecha": "2016-12-01",
+        "cupo": 10
+    }
+},
+{
+    "model": "users.usercupo",
+    "pk": 5,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:20:50.476Z",
+        "fecha_modificacion": "2016-12-18T18:20:50.476Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 5,
+        "fecha": "2016-12-01",
+        "cupo": 10
+    }
+},
+{
+    "model": "users.usercupo",
+    "pk": 6,
+    "fields": {
+        "fecha_creacion": "2016-12-18T18:20:54.898Z",
+        "fecha_modificacion": "2016-12-18T18:20:54.898Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 6,
+        "fecha": "2016-12-01",
+        "cupo": 10
+    }
+},
+{
+    "model": "users.userdisponibilidad",
+    "pk": 1,
+    "fields": {
+        "fecha_creacion": "2016-12-18T23:31:36.790Z",
+        "fecha_modificacion": "2016-12-18T23:31:36.792Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 1,
+        "turno": 1,
+        "horario": "2016-12-18"
+    }
+},
+{
+    "model": "users.userdisponibilidad",
+    "pk": 2,
+    "fields": {
+        "fecha_creacion": "2016-12-18T23:31:50.355Z",
+        "fecha_modificacion": "2016-12-18T23:31:50.355Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 2,
+        "turno": 2,
+        "horario": "2016-12-18"
+    }
+},
+{
+    "model": "users.userdisponibilidad",
+    "pk": 3,
+    "fields": {
+        "fecha_creacion": "2016-12-18T23:32:00.320Z",
+        "fecha_modificacion": "2016-12-18T23:32:00.320Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 3,
+        "turno": 1,
+        "horario": "2016-12-18"
+    }
+},
+{
+    "model": "users.userdisponibilidad",
+    "pk": 4,
+    "fields": {
+        "fecha_creacion": "2016-12-18T23:32:04.965Z",
+        "fecha_modificacion": "2016-12-18T23:32:04.965Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 4,
+        "turno": 2,
+        "horario": "2016-12-18"
+    }
+},
+{
+    "model": "users.userdisponibilidad",
+    "pk": 5,
+    "fields": {
+        "fecha_creacion": "2016-12-18T23:32:09.302Z",
+        "fecha_modificacion": "2016-12-18T23:32:09.302Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 5,
+        "turno": 2,
+        "horario": "2016-12-18"
+    }
+},
+{
+    "model": "users.userdisponibilidad",
+    "pk": 6,
+    "fields": {
+        "fecha_creacion": "2016-12-18T23:32:14.766Z",
+        "fecha_modificacion": "2016-12-18T23:32:14.766Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 6,
+        "turno": 1,
+        "horario": "2016-12-18"
+    }
+},
+{
+    "model": "users.userdisponibilidad",
+    "pk": 7,
+    "fields": {
+        "fecha_creacion": "2016-12-18T23:57:40.575Z",
+        "fecha_modificacion": "2016-12-18T23:58:02.696Z",
+        "usuario_creacion": null,
+        "es_removido": false,
+        "usuario": 4,
+        "turno": 1,
+        "horario": "2016-12-18"
+    }
+}
+]

@@ -1,0 +1,8 @@
+ACTIVO = 'ACTIVO'
+INACTIVO = 'INACTIVO'
+PENDIENTE = 'PENDIENTE'
+STATUS_MODEL = (
+    (ACTIVO, 'Activo'),
+    (INACTIVO, 'Inactivo'),
+    (PENDIENTE, 'Pendiente'),
+)

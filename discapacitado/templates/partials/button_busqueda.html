@@ -1,0 +1,15 @@
+<div class="panel-heading">
+    <div class="heading-elements">
+        <form method="post" class="form-search form-horizontal pull-right">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" class="form-control" name="query_search"
+                       placeholder="buscar por nombres o dni">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="SUBMIT">Busqueda</button>
+                  </span>
+            </div>
+        </form>
+    </div>
+    <br/>
+</div>

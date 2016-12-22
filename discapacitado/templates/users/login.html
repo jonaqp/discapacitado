@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> MINSA - CRED</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/plantilla/css/app.css' %}">
+  </head>
+  <body>
+    <main class="full-view full-view--flex">
+    	<div class="full-view__item-1 back-image"></div>
+    	<div class="full-view__item-1 view-center back-grey">
+    		<img src="{% static "vendor/plantilla/img/minsa_logo.png" %}" alt="minsa logo" class="item__logo">
+    		<section class="login-side">
+    			<p class="login-side__title">Bienvenido al Sistema</p>
+          <form method="post" class="form-horizontal">
+          {% csrf_token %}
+      			<div class="login-card">
+      				<div class="input-box input-box--full">
+      					{{ form.username }}
+      				</div>
+      				<div class="input-box input-box--full">
+      					{{form.password }}
+      				</div>
+      				<div class="view-center">
+                <button class="btn btn-primary" type="submit">
+                  INGRESAR
+                </button>
+      				</div>
+      			</div>
+          </form>
+    		</section>
+    	</div>
+    </main>
+  </body>
+</html>

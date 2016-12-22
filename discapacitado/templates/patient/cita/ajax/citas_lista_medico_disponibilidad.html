@@ -1,0 +1,43 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Disnobilidad: <b>{{ usuario.first_name|default_if_none:"TEST"}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive" style="display: block;">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Horario</th>
+                    <th>Fecha</th>
+                    <th>Aplica</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if lista_disponibilidad %}
+                    {% for disponibilidad in lista_disponibilidad %}
+                        <tr>
+                            <td><b>{{ forloop.counter }}.-</b></td>
+                            <td>{{ disponibilidad.turno }}</td>
+                            <td>{{ disponibilidad.horario|date:"dl-F-o" }}</td>
+                            <td><input type="radio" name="aplica"
+                                       data-disponibilidad="{{ disponibilidad.id }}"
+                                       class="chk_aplica_disponibilidad"></td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No Existen Registros</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">No Existen Registros</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+

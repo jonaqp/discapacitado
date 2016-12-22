@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filter %}
+{% block title %}DashBoard{% endblock title %}
+
+{% block header %}
+    {{ block.super }}
+{% endblock header %}
+
+{% block nav %}
+    {{ block.super }}
+{% endblock nav %}
+
+
+{% block container %}
+    <div class="row">
+        <br><br> <br><br>
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="center-block">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <h4>SELECCIONA ESTABLECIMIENTO</h4>
+                    {{ establishment_form.establecimiento|add_class:"form-control"}}
+                    <br>
+                    <button type="submit" class="btn btn-primary center-block">Entrar</button>
+                </div>
+                 <div class="col-md-4"></div>
+            </div>
+        </form>
+
+
+    </div>
+{% endblock container %}
+
+
+{% block javascript %}
+    <script src="{% static 'vendor/select2/js/select2.full.min.js' %}"></script>
+{% endblock javascript %}
