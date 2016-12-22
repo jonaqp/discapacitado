@@ -150,10 +150,10 @@ class CitaList(LoginRequiredMixin, ListView):
         return queryset
 
     def get(self, request, *args, **kwargs):
-        _establecimiento = request.session.get('actual_establecimiento', None)
-        if _establecimiento:
-            return redirect('paciente-app:admision:list')
         self.object_list = self.get_queryset()
+        _establecimiento = request.session.get('actual_establecimiento', None)
+        if not _establecimiento:
+            return redirect('paciente-app:establecimiento')
         return super().render_to_response(
             self.get_context_data(object_list=self.object_list))
 
