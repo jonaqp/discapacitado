@@ -2,7 +2,6 @@
 import requests
 from discapacitado.common.drf_custom import LargeResultsSetPagination
 from discapacitado.common.mixins import JSONResponseMixin
-from django.conf import settings
 from django.db.models import Q
 from django.views import View
 from rest_framework.generics import ListAPIView
@@ -12,7 +11,7 @@ from .serializers import (
     ListaEstablecimientoSerializer
 )
 
-BASE_URL_API = settings.BASE_URL_API
+
 
 
 class ListaEstablecimientoJSONAPI(View, JSONResponseMixin):

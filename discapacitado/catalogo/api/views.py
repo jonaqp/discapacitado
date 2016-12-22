@@ -19,7 +19,7 @@ class ListaCatalogoCIEJSONAPI(View, JSONResponseMixin):
         search_param = self.request.GET.get('q', '')
         data = requests.get(
             '{}?q={}&page_size=10'.format(
-                "http://localhost:8006/api/v1/catalogo/cie/lista/",
+                "https://discapacitado-minsa.herokuapp.com/api/v1/catalogo/cie/lista/",
                 search_param)).json().get('data')
         json_data = []
         for obj_data in data:
@@ -58,7 +58,7 @@ class ListaCatalogoDEFICIENCIAJSONAPI(View, JSONResponseMixin):
         search_param = self.request.GET.get('q', '')
         data = requests.get(
             '{}?q={}&page_size=10'.format(
-                "http://localhost:8006/api/v1/catalogo/deficiencia/lista/",
+                "https://discapacitado-minsa.herokuapp.com/api/v1/catalogo/deficiencia/lista/",
                 search_param)).json().get('data')
         json_data = []
         for obj_data in data:
@@ -98,7 +98,7 @@ class ListaCatalogoPROCEDIMIENTOJSONAPI(View, JSONResponseMixin):
         search_param = self.request.GET.get('q', '')
         data = requests.get(
             '{}?q={}&page_size=10'.format(
-                "http://localhost:8006/api/v1/catalogo/procedimiento/lista/",
+                "https://discapacitado-minsa.herokuapp.com/api/v1/catalogo/procedimiento/lista/",
                 search_param)).json().get('data')
         json_data = []
         for obj_data in data:
