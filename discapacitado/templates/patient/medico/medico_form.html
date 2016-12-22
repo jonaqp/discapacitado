@@ -89,7 +89,7 @@
                             <div class="clearfix"></div>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading">
+                                <div class="panel-heading"> |
                                     <h3 class="panel-title">Condiccion
                                         Paciente</h3>
                                 </div>
@@ -98,7 +98,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{ form_condicion.en_establecimiento.label }}</label>
-                                            {{ form_condicion.en_establecimiento|add_class:"form-control" }}
+                                            {{ form_condicion.en_establecimiento|add_class<:"form-control" }}
                                             <span class="help-block">{{ form_condicion.en_establecimiento.errors }}</span>
 
                                         </div>
