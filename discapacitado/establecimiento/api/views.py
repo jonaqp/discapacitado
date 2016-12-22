@@ -21,7 +21,7 @@ class ListaEstablecimientoJSONAPI(View, JSONResponseMixin):
         print(search_param)
         data = requests.get(
             '{}?q={}&page_size=10'.format(
-                "http://localhost:8006/api/v1/establecimiento/lista/",
+                "https://discapacitado-minsa.herokuapp.com/api/v1/establecimiento/lista/",
                 search_param)).json().get('data')
         json_data = []
         for obj_data in data:
