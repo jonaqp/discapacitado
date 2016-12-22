@@ -168,6 +168,3 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
-
-BASE_URL_API = 'http://localhost:8006/'
